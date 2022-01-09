@@ -8,7 +8,6 @@ import HeaderLink from "../components/HeaderLink";
 import { getProviders, signIn } from "next-auth/react";
 
 function Home({ providers }) {
-  console.log(providers);
   return (
     <div className="space-y-10 relative">
       <header className="flex justify-around items-center py-4">
@@ -59,7 +58,7 @@ function Home({ providers }) {
         </div>
 
         <div className="relative xl:absolute w-80 h-80 xl:w-[650px] xl:h-[650px] top-14 right-5">
-          <Image src="https://rb.gy/vkzpzt" layout="fill" />
+          <Image src="https://rb.gy/vkzpzt" layout="fill" priority />
         </div>
       </main>
     </div>

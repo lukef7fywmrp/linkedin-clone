@@ -16,7 +16,7 @@ function Sidebar() {
         </div>
         <Avatar
           src={session?.user?.image}
-          className="h-14 w-14 border-2 absolute top-4"
+          className="!h-14 !w-14 !border-2 !absolute !top-4"
         />
         <div className="mt-5 py-4 space-y-0.5">
           <h4 className="hover:underline decoration-purple-700 underline-offset-1 cursor-pointer">

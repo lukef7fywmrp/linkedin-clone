@@ -15,7 +15,7 @@ function HeaderLink({ Icon, text, feed, active, avatar, hidden }) {
       onClick={() => avatar && signOut()}
     >
       {avatar ? (
-        <Icon className="h-7 w-7 lg:!-mb-1" src={session?.user?.image} />
+        <Icon className="!h-7 !w-7 lg:!-mb-1" src={session?.user?.image} />
       ) : (
         <Icon />
       )}

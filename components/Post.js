@@ -7,12 +7,15 @@ import { useRecoilState } from "recoil";
 import { handlePostState, getPostState } from "../atoms/postAtom";
 import { useState } from "react";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
+import ReplyRoundedIcon from "@mui/icons-material/ReplyRounded";
 import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
 import { modalState, modalTypeState } from "../atoms/modalAtom";
 import ReadMoreReact from "read-more-react";
 import TimeAgo from "timeago-react";
+import { useSession } from "next-auth/react";
 
 function Post({ post, modalPost }) {
+  const { data: session } = useSession();
   const [handlePost, setHandlePost] = useRecoilState(handlePostState);
   const [liked, setLiked] = useState(false);
   const [modalOpen, setModalOpen] = useRecoilState(modalState);
@@ -39,7 +42,7 @@ function Post({ post, modalPost }) {
       } space-y-2 py-2.5 border border-gray-300 dark:border-none`}
     >
       <div className="flex items-center px-2.5 cursor-pointer">
-        <Avatar src={post.userImg} className="h-10 w-10 cursor-pointer" />
+        <Avatar src={post.userImg} className="!h-10 !w-10 cursor-pointer" />
         <div className="mr-auto ml-2 leading-none">
           <h6 className="font-medium hover:text-blue-500 hover:underline">
             {post.username}
@@ -105,10 +108,20 @@ function Post({ post, modalPost }) {
           </button>
         )}
 
-        <button className="postButton focus:text-red-400" onClick={deletePost}>
-          <DeleteRoundedIcon />
-          <h4>Delete post</h4>
-        </button>
+        {session.user.email === post.email ? (
+          <button
+            className="postButton focus:text-red-400"
+            onClick={deletePost}
+          >
+            <DeleteRoundedIcon />
+            <h4>Delete post</h4>
+          </button>
+        ) : (
+          <button className="postButton ">
+            <ReplyRoundedIcon className="-scale-x-100" />
+            <h4>Share</h4>
+          </button>
+        )}
       </div>
     </div>
   );

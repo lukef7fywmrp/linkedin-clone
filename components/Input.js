@@ -18,7 +18,7 @@ function Input() {
       <div className="flex items-center space-x-2">
         <Avatar
           src={session?.user?.image}
-          className="h-10 w-10 cursor-pointer"
+          className="!h-10 !w-10 cursor-pointer"
         />
         <motion.button
           whileHover={{ scale: 1.01 }}
