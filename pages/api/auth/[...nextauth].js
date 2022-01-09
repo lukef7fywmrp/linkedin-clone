@@ -20,4 +20,7 @@ export default NextAuth({
   session: {
     strategy: "jwt",
   },
+  jwt: {
+    secret: process.env.JWT_SECRET,
+  },
 });
