@@ -53,7 +53,7 @@ function Header() {
       <div className="flex items-center space-x-6">
         <HeaderLink Icon={HomeRoundedIcon} text="Home" feed active />
         <HeaderLink Icon={GroupIcon} text="My Network" feed />
-        <HeaderLink Icon={BusinessCenterIcon} text="Jobs" feed />
+        <HeaderLink Icon={BusinessCenterIcon} text="Jobs" feed hidden />
         <HeaderLink Icon={ChatIcon} text="Messaging" feed />
         <HeaderLink Icon={NotificationsIcon} text="Notifications" feed />
         <HeaderLink Icon={Avatar} text="Me" feed avatar hidden />

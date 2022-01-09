@@ -5,7 +5,7 @@ function HeaderLink({ Icon, text, feed, active, avatar, hidden }) {
 
   return (
     <div
-      className={`${hidden && "hidden lg:inline-flex"} ${
+      className={`${hidden && "hidden md:inline-flex"} ${
         feed
           ? "text-black/60 hover:text-black dark:text-white/75 dark:hover:text-white lg:-mb-1.5 space-y-1"
           : "text-gray-500 hover:text-gray-700"
