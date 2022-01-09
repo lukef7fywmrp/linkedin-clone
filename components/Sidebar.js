@@ -1,5 +1,5 @@
 import { Avatar } from "@mui/material";
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import AddRoundedIcon from "@mui/icons-material/AddRounded";
@@ -15,8 +15,9 @@ function Sidebar() {
           <Image src="https://rb.gy/i26zak" layout="fill" priority />
         </div>
         <Avatar
+          onClick={signOut}
           src={session?.user?.image}
-          className="!h-14 !w-14 !border-2 !absolute !top-4"
+          className="!h-14 !w-14 !border-2 !absolute !top-4 !cursor-pointer"
         />
         <div className="mt-5 py-4 space-y-0.5">
           <h4 className="hover:underline decoration-purple-700 underline-offset-1 cursor-pointer">
@@ -61,7 +62,7 @@ function Sidebar() {
         <p className="sidebarLink">Groups</p>
         <div className="flex items-center justify-between">
           <p className="sidebarLink">Events</p>
-          <AddRoundedIcon className="h-5" />
+          <AddRoundedIcon className="!h-5" />
         </div>
         <p className="sidebarLink">Followed Hashtags</p>
         <div className="sidebarButton text-center">
