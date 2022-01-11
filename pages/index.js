@@ -27,7 +27,7 @@ export default function Home({ posts, articles }) {
   console.log("Current theme is", theme);
 
   return (
-    <div className="bg-[#F3F2EF] dark:bg-black h-screen overflow-y-scroll md:space-y-6">
+    <div className="bg-[#F3F2EF] dark:bg-black dark:text-white h-screen overflow-y-scroll md:space-y-6">
       <Head>
         <title>Feed | LinkedIn</title>
         <link rel="icon" href="/favicon.ico" />
