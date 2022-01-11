@@ -14,8 +14,6 @@ function Form() {
   const uploadPost = async (e) => {
     e.preventDefault();
 
-    setHandlePost(!handlePost);
-
     const response = await fetch("/api/posts", {
       method: "POST",
       body: JSON.stringify({
@@ -33,6 +31,7 @@ function Form() {
 
     const responseData = await response.json();
 
+    setHandlePost(true);
     setModalOpen(false);
   };
 
