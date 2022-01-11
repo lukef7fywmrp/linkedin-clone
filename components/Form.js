@@ -14,7 +14,7 @@ function Form() {
   const uploadPost = async (e) => {
     e.preventDefault();
 
-    setHandlePost(true);
+    setHandlePost(!handlePost);
 
     const response = await fetch("/api/posts", {
       method: "POST",

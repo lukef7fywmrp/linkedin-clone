@@ -28,7 +28,7 @@ function Post({ post, modalPost }) {
   const [postState, setPostState] = useRecoilState(getPostState);
 
   const deletePost = async () => {
-    setHandlePost(true);
+    setHandlePost(!handlePost);
     const response = await fetch(`/api/posts/${post._id}`, {
       method: "DELETE",
       headers: {
@@ -37,7 +37,6 @@ function Post({ post, modalPost }) {
     });
 
     setModalOpen(false);
-    setUseSSRPosts(false);
     console.log(response);
   };
 
