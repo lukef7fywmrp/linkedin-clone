@@ -10,7 +10,6 @@ import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import ReplyRoundedIcon from "@mui/icons-material/ReplyRounded";
 import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
 import { modalState, modalTypeState } from "../atoms/modalAtom";
-import ReadMoreReact from "read-more-react";
 import TimeAgo from "timeago-react";
 import { useSession } from "next-auth/react";
 
@@ -21,6 +20,10 @@ function Post({ post, modalPost }) {
   const [modalOpen, setModalOpen] = useRecoilState(modalState);
   const [modalType, setModalType] = useRecoilState(modalTypeState);
   const [postState, setPostState] = useRecoilState(getPostState);
+  const [showInput, setShowInput] = useState(false);
+
+  const truncate = (string, n) =>
+    string?.length > n ? string.substr(0, n - 1) + "...see more" : string;
 
   const deletePost = async () => {
     const response = await fetch(`/api/posts/${post._id}`, {
@@ -65,11 +68,13 @@ function Post({ post, modalPost }) {
       </div>
 
       {post.input && (
-        <div className="px-2.5">
-          {modalPost ? (
-            <p>{post.input}</p>
+        <div className="px-2.5 break-words ">
+          {modalPost || showInput ? (
+            <p onClick={() => setShowInput(false)}>{post.input}</p>
           ) : (
-            <ReadMoreReact text={post.input} readMoreText="...see more" />
+            <p onClick={() => setShowInput(true)}>
+              {truncate(post.input, 150)}
+            </p>
           )}
         </div>
       )}

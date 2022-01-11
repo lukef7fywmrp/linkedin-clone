@@ -24,7 +24,7 @@ export default function Home({ posts, articles }) {
   const modalType = useRecoilValue(modalTypeState);
   const { theme, setTheme } = useTheme();
 
-  console.log("Current theme is ", theme);
+  console.log("Current theme is", theme);
 
   return (
     <div className="bg-[#F3F2EF] dark:bg-black h-screen overflow-y-scroll md:space-y-6">
