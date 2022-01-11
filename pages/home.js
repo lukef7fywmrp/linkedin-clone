@@ -8,9 +8,6 @@ import HeaderLink from "../components/HeaderLink";
 import { getProviders, signIn, useSession } from "next-auth/react";
 
 function Home({ providers }) {
-  const { data: session } = useSession();
-
-  console.log(session);
   return (
     <div className="space-y-10 relative">
       <header className="flex justify-around items-center py-4">
