@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 
 export async function middleware(req) {
   const { pathname } = req.nextUrl;
-  if (pathname === "/" || pathname === "/api/posts") {
+  if (pathname === "/") {
     const session = await getToken({
       req,
       secret: process.env.JWT_SECRET,
