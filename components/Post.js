@@ -68,7 +68,7 @@ function Post({ post, modalPost }) {
       </div>
 
       {post.input && (
-        <div className="px-2.5 break-words ">
+        <div className="px-2.5 break-all md:break-normal">
           {modalPost || showInput ? (
             <p onClick={() => setShowInput(false)}>{post.input}</p>
           ) : (
