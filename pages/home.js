@@ -6,10 +6,15 @@ import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import HeaderLink from "../components/HeaderLink";
 import { getProviders, signIn, useSession } from "next-auth/react";
+import Head from "next/head";
 
 function Home({ providers }) {
   return (
     <div className="space-y-10 relative">
+      <Head>
+        <title>LinkedIn</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <header className="flex justify-around items-center py-4">
         <div className="relative w-36 h-10">
           <Image src="https://rb.gy/vtbzlp" layout="fill" objectFit="contain" />
