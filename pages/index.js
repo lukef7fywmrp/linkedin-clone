@@ -1,4 +1,4 @@
-import { getSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import { connectToDatabase } from "../util/mongodb";
 import { AnimatePresence } from "framer-motion";
 import Modal from "../components/Modal";
@@ -10,8 +10,16 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import Widgets from "../components/Widgets";
 import { useTheme } from "next-themes";
+import { useRouter } from "next/router";
 
 export default function Home({ posts, articles }) {
+  const router = useRouter();
+  const { status } = useSession({
+    required: true,
+    onUnauthenticated() {
+      router.push("/home");
+    },
+  });
   const [modalOpen, setModalOpen] = useRecoilState(modalState);
   const modalType = useRecoilValue(modalTypeState);
   const { theme, setTheme } = useTheme();
@@ -44,8 +52,16 @@ export default function Home({ posts, articles }) {
 }
 
 export async function getServerSideProps(context) {
-  // Get User on SSR
+  // Check if the user is authenticated on the server
   const session = await getSession(context);
+  if (!session) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/home",
+      },
+    };
+  }
 
   // Get posts on SSR
   const { db } = await connectToDatabase();

@@ -5,9 +5,12 @@ import OndemandVideoSharpIcon from "@mui/icons-material/OndemandVideoSharp";
 import BusinessCenterIcon from "@mui/icons-material/BusinessCenter";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import HeaderLink from "../components/HeaderLink";
-import { getProviders, signIn } from "next-auth/react";
+import { getProviders, signIn, useSession } from "next-auth/react";
 
 function Home({ providers }) {
+  const { data: session } = useSession();
+
+  console.log(session);
   return (
     <div className="space-y-10 relative">
       <header className="flex justify-around items-center py-4">

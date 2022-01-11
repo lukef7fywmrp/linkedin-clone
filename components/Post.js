@@ -108,7 +108,7 @@ function Post({ post, modalPost }) {
           </button>
         )}
 
-        {session.user.email === post.email ? (
+        {session?.user?.email === post.email ? (
           <button
             className="postButton focus:text-red-400"
             onClick={deletePost}
