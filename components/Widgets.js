@@ -1,6 +1,7 @@
 import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import FiberManualRecordRoundedIcon from "@mui/icons-material/FiberManualRecordRounded";
 import Image from "next/image";
+import TimeAgo from "timeago-react";
 
 function Widgets({ articles }) {
   return (
@@ -23,9 +24,10 @@ function Widgets({ articles }) {
                 <h5 className="max-w-xs font-medium text-sm truncate pr-10">
                   {article.title}
                 </h5>
-                <p className="text-xs mt-0.5 dark:text-white/75 opacity-80">
-                  {article.publishedAt}
-                </p>
+                <TimeAgo
+                  datetime={article.publishedAt}
+                  className="text-xs mt-0.5 dark:text-white/75 opacity-80"
+                />
               </div>
             </div>
           ))}
