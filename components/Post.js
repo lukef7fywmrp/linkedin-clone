@@ -4,11 +4,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import ThumbUpOffAltOutlinedIcon from "@mui/icons-material/ThumbUpOffAltOutlined";
 import ThumbUpOffAltRoundedIcon from "@mui/icons-material/ThumbUpOffAltRounded";
 import { useRecoilState } from "recoil";
-import {
-  handlePostState,
-  getPostState,
-  useSSRPostsState,
-} from "../atoms/postAtom";
+import { handlePostState, getPostState } from "../atoms/postAtom";
 import { useState } from "react";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 import ReplyRoundedIcon from "@mui/icons-material/ReplyRounded";
@@ -21,14 +17,12 @@ import { useSession } from "next-auth/react";
 function Post({ post, modalPost }) {
   const { data: session } = useSession();
   const [handlePost, setHandlePost] = useRecoilState(handlePostState);
-  const [useSSRPosts, setUseSSRPosts] = useRecoilState(useSSRPostsState);
   const [liked, setLiked] = useState(false);
   const [modalOpen, setModalOpen] = useRecoilState(modalState);
   const [modalType, setModalType] = useRecoilState(modalTypeState);
   const [postState, setPostState] = useRecoilState(getPostState);
 
   const deletePost = async () => {
-    setHandlePost(!handlePost);
     const response = await fetch(`/api/posts/${post._id}`, {
       method: "DELETE",
       headers: {
@@ -36,6 +30,7 @@ function Post({ post, modalPost }) {
       },
     });
 
+    setHandlePost(true);
     setModalOpen(false);
     console.log(response);
   };

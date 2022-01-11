@@ -20,6 +20,7 @@ function Feed({ posts }) {
 
       const responseData = await response.json();
       setRealtimePosts(responseData);
+      setHandlePost(false);
       setUseSSRPosts(false);
     };
 
